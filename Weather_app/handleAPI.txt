@@ -1,0 +1,14 @@
+whenever we make a web request to a server or third party application:
+-server can throw some error
+-your databse is always in different continent , it can take some time to fetch the databse
+
+thus-> try to encapsulate everything in try and catch to handle errors
+
+- in order to fetch data from app javascript alone cannot do that , we need window or browser env for this
+so we genearlly use FETCH API
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+
+-in order to understand the API RESPONSES of many web app/llms we can use JSON response formatter to understand what data type and which prperty to extract to get the value.
+https://jsonformatter.org/
+
+
