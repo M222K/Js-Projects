@@ -53,14 +53,21 @@ document.addEventListener("DOMContentLoaded",()=>{
             cart.forEach((item,index)=>{
                 total+=item.price;
                 const cartItem=document.createElement('div');
+                cartItem.className="product";
+                cartItem.id='cart-item';
                 cartItem.innerHTML=`
-                <span>${item.name} $${item.price}</span>`;
+                <span>${item.name} $${item.price}</span>
+                <button class="button" id="${index}">Remove</button>`;
                 cartItems.appendChild(cartItem);
                 totalPrice.textContent=total.toFixed(2);
             })
 
         }else{
             emptyCartMessage.classList.remove("hidden");
+            if(totalPrice.textContent!="0.00"){
+                totalPrice.textContent="0.00";
+            }
+
         }
     }
 
@@ -70,4 +77,17 @@ document.addEventListener("DOMContentLoaded",()=>{
         cart.length=0;
         renderCart();
     })
+
+
+    //handling remove item from cart
+    const cartdiv=document.getElementById('cart-items');
+
+    cartdiv.addEventListener("click",(e)=>{
+        if(e.target.tagName==="BUTTON"){
+            console.log(typeof e.target.id);
+            const index=parseInt(e.target.id);
+            cart.splice(index,1);
+            renderCart();
+        }
+    });
 })
